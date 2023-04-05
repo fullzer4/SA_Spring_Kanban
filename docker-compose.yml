@@ -1,29 +1,21 @@
-version: '3.3'
+version: '3.1'
 services:
-
-  db-postgres:
+  postgresqldb:
     image: postgres
-    environment:
-      POSTGRES_PASSWORD: "123456"
     ports:
-      - "15432:5432"
-    volumes:
-      - /home/renatogroffe/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
-    networks:
-      - postgres-compose-network
-      
-  db-pgadmin:
-    image: dpage/pgadmin4
+      - "5432:5432"
     environment:
-      PGADMIN_DEFAULT_EMAIL: "gabrielpelizzaro@gmail.com"
-      PGADMIN_DEFAULT_PASSWORD: "123456"
-    ports:
-      - "16543:80"
-    depends_on:
-      - db-postgres
-    networks:
-      - postgres-compose-network
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=taskdb
 
-networks: 
-  postgres-compose-network:
-    driver: bridge
+  backend:
+    container_name: saspringkanban
+    image: saspringkanban
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqldb
