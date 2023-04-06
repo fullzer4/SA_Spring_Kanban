@@ -24,14 +24,20 @@ public class TaskController {
         return ResponseEntity.ok(taskRepository.findAll());
     }
 
-    @GetMapping("/tasks/updateTask/{id}")
-    public ResponseEntity<Task> findTaskId(@PathVariable(value = "id") Integer id){
+    @PutMapping("/Tasks/update/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable(value = "id") Integer id, @RequestBody Task taskDetails){
         Task task = taskRepository.findById(id).orElseThrow(
             ()-> new ResourceNotFound("Task not found: " + id));
-            return ResponseEntity.ok().body(task);
+    
+        task.setName(taskDetails.getName());
+        task.setText(taskDetails.getText());
+    
+        Task updatedTask = taskRepository.save(task);
+    
+        return ResponseEntity.ok(updatedTask);
     }
 
-    @DeleteMapping("/tasks/delete/{id}")
+    @DeleteMapping("/Tasks/delete/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable(value = "id") Integer id){
         Task task = taskRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFound("Task not found: " + id));
