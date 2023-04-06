@@ -1,13 +1,5 @@
 version: '3.1'
 services:
-  postgresqldb:
-    image: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=123456
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=taskdb
 
   backend:
     container_name: saspringkanban
@@ -19,3 +11,12 @@ services:
       - "8080:8080"
     depends_on:
       - postgresqldb
+
+  postgresqldb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=taskdb

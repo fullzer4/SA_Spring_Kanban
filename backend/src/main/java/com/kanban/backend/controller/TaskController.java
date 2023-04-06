@@ -19,7 +19,7 @@ public class TaskController {
         return taskRepository.save(task);
     }
 
-    @PostMapping("/Tasks/get")
+    @GetMapping("/Tasks/get")
     public ResponseEntity<List<Task>> findAll(){
         return ResponseEntity.ok(taskRepository.findAll());
     }
