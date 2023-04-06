@@ -1,10 +1,13 @@
-# SA_Spring_Kanban
-
-pgAdmin: http://localhost:16543/
-
-postgres
-123456
-
-tutorial docker-compose: https://renatogroffe.medium.com/postgresql-pgadmin-4-docker-compose-montando-rapidamente-um-ambiente-para-uso-55a2ab230b89
-
-execute: mvn spring-boot:run
+<h1> SA_Spring_Kanban </h1>
+<h2> MER - Postgresql Database</h2>
+<div>
+  <img src="/imgs/MER.png">
+</div>
+<h2> WebApp shown screen kanban</h2>
+<div>
+  <img src="/imgs/MER.png">
+</div>
+<h2> App shown screen kanban</h2>
+<div>
+  <img src="/imgs/MER.png">
+</div>
