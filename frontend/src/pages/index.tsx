@@ -26,6 +26,11 @@ const Home: NextPage = () => {
       .catch(error => console.error(error))
   }, [])
 
+  const finishTask = (e:any) => {
+    e.preventDefault()
+    
+  }
+
   return (
     <>
       <Head>

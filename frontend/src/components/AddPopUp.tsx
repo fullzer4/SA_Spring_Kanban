@@ -11,7 +11,7 @@ const AddPopup: NextComponentType = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const response = await fetch('http://localhost:8080/Tasks/add', {
+    const response = await fetch('http://localhost:8080/api/Tasks/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ const AddPopup: NextComponentType = () => {
     });
 
     if (response.ok) {
-      console.log("foi")
+      changeAddState(event)
     } else {
       console.error('Failed to add task');
     }

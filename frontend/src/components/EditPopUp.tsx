@@ -6,7 +6,7 @@ const EditPopup: NextComponentType = () => {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
 
-  const {edit} = useContext(PopupContext)
+  const {edit, changeEditState} = useContext(PopupContext)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,6 +28,7 @@ const EditPopup: NextComponentType = () => {
 
   return (
     <div className={edit}>
+      <button onClick={(e) => changeEditState(e)}> Close </button>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
