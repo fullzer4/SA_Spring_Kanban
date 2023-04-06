@@ -10,9 +10,13 @@
 </div>
 <h2> WebApp shown screen kanban</h2>
 <div>
-  <img src="/imgs/MER.png">
+  <img src="/imgs/WebApp.png">
 </div>
 <h2> App shown screen kanban</h2>
 <div>
-  <img src="/imgs/MER.png">
+  <img src="/imgs/App.png">
+</div>
+<h2> Class for mobile </h2>
+<div>
+  <p>pasta mobile</p>
 </div>
