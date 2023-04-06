@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Task extends  TaskAudit{
+public class Task{
 
     @Id
     @GeneratedValue

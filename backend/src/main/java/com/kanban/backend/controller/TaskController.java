@@ -24,7 +24,7 @@ public class TaskController {
         return ResponseEntity.ok(taskRepository.findAll());
     }
 
-    @GetMapping("/tasks/getTask/{id}")
+    @GetMapping("/tasks/updateTask/{id}")
     public ResponseEntity<Task> findTaskId(@PathVariable(value = "id") Integer id){
         Task task = taskRepository.findById(id).orElseThrow(
             ()-> new ResourceNotFound("Task not found: " + id));
