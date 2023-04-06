@@ -26,18 +26,48 @@ class User extends data {
     }
 
     deleteData(e, id){
-
+        e.preventDefault()
+        fetch(`http://localhost:8080/api/Tasks/delete/${id}`, {
+            method: 'DELETE',
+            mode: 'cors',
+        })
+        .then(() => {
+            console.log("deletada task")
+        })
+        .catch(error => console.error(error))
     }
 
-    updateData(e, id){
+    async updateData(e, id){
+        e.preventDefault();
 
+        let name = this.name
+        let text = this.text
+
+        const response = await fetch(`http://localhost:8080/api/Tasks/update/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, text })
+        });
+    
+        if (response.ok) {
+            console.log("Task updated successfully");
+        } else {
+            console.error('Failed to update task');
+        }
     }
 
-    getData(e, id){
-
+    getData(){
+        fetch('http://localhost:8080/api/Tasks/get', {
+            mode: 'cors',
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error))
     }
 
-    async addData(e){
+    async addData(e, id){
         e.preventDefault();
 
         let name = this.name
