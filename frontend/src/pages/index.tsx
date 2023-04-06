@@ -47,21 +47,21 @@ const Home: NextPage = () => {
         <AddPopup/>
         <EditPopup/>
         <Navbar/>
-        <div>
+        <div className='Box-tasks'>
           {tasks.length > 0 ? (
-            <ul>
+            <ul className='tasks'>
               {tasks.map(task => (
                 <li key={task.id}>
-                  <div>
+                  <div className='title'>
                     <h2>{task.name}</h2>
                     <hr/>
                   </div>
-                  <div>
+                  <div className='content'>
                     <p>{task.text}</p>
                   </div>
-                  <div>
-                    <button onClick={(e) => changeEditState(e)}> Edit task </button>
-                    <button onClick={(e) => finishTask(e, task.id)}> Complete </button>
+                  <div className='buttons'>
+                    <button className='edit' onClick={(e) => changeEditState(e)}> Edit task </button>
+                    <button className='finish' onClick={(e) => finishTask(e, task.id)}> Complete </button>
                   </div>
                 </li>
               ))}

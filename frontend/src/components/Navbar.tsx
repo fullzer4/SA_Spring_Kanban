@@ -8,7 +8,7 @@ const Navbar: NextComponentType = () => {
 
   return (
     <div className="Navbar">
-        <p>Fullzer4</p>
+        <p className='Logo'>Fullzer4</p>
         <h1>Gerenciador de tarefas</h1>
         <button onClick={(e) => changeAddState(e)}>Add Task</button>
     </div>

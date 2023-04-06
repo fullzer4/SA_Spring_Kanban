@@ -28,8 +28,8 @@ const AddPopup: NextComponentType = () => {
 
   return (
     <div className={add}>
-      <button onClick={(e) => changeAddState(e)}> Close </button>
-      <form onSubmit={handleSubmit}>
+      <button className='close' onClick={(e) => changeAddState(e)}> Close </button>
+      <form onSubmit={handleSubmit} className='forms'>
         <label>
           Name:
           <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
