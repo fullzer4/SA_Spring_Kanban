@@ -6,23 +6,25 @@ const EditPopup: NextComponentType = () => {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
 
-  const {edit, changeEditState} = useContext(PopupContext)
+  const { edit, changeEditState } = useContext(PopupContext);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const response = await fetch('http://localhost:8080/Tasks/add', {
-      method: 'POST',
+  
+    const taskId = 1
+    const response = await fetch(`http://localhost:8080/api/Tasks/update/${taskId}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name, text })
     });
-
+  
     if (response.ok) {
-      console.log("foi")
+      changeEditState(event)
+      console.log("Task updated successfully");
     } else {
-      console.error('Failed to add task');
+      console.error('Failed to update task');
     }
   };
 

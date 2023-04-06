@@ -26,9 +26,16 @@ const Home: NextPage = () => {
       .catch(error => console.error(error))
   }, [])
 
-  const finishTask = (e:any) => {
+  const finishTask = (e:any, taskId:any) => {
     e.preventDefault()
-    
+    fetch(`http://localhost:8080/api/Tasks/delete/${taskId}`, {
+      method: 'DELETE',
+      mode: 'cors',
+    })
+      .then(() => {
+        console.log("deletada task")
+      })
+      .catch(error => console.error(error))
   }
 
   return (
@@ -54,7 +61,7 @@ const Home: NextPage = () => {
                   </div>
                   <div>
                     <button onClick={(e) => changeEditState(e)}> Edit task </button>
-                    <button> Complete </button>
+                    <button onClick={(e) => finishTask(e, task.id)}> Complete </button>
                   </div>
                 </li>
               ))}
